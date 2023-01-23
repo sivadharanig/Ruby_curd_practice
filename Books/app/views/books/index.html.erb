@@ -1,0 +1,42 @@
+<h1>Book List</h1>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<%=link_to "create New Book",new_book_path%>
+<table>
+  <tr>
+    <th>Book</th>
+    <th>Edit</th>
+    <th>delete</th>
+  </tr>
+  <% @books.each do |data|%>
+  <tr>
+    <td><%= link_to data.name, data%></td>
+    <td><%= link_to "edit",edit_book_path(data)%></td>
+    <td><%= link_to "destroy",book_path(data),data:{turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+  </tr>
+ <%end%>
+</table>
+
+</body>
+</html>

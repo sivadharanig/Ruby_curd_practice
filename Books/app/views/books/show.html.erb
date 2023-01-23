@@ -1,0 +1,42 @@
+<h1>Book List</h1>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<table>
+  <tr>
+    <th>Book Name</th>
+    <th>Price</th>
+    <th>Edit</th>
+    <th>delete</th>
+  </tr>
+  <tr>
+    <td><%=@book.name %></td>
+    <td><%= @book.price%></td>
+    <td><%=link_to "Edit",edit_book_path%></td>
+    <td><%= link_to "destroy",book_path(@book),data:{turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
+  </tr>
+
+</table>
+<%= link_to "Home Page",root_path%><br>
+</body>
+</html>
